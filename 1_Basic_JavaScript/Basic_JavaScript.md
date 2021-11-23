@@ -279,3 +279,128 @@ a /= 12;
 b /= 4;
 c /= 11;
 ```
+
+## Escaping Literal Quotes in Strings
+
+```js
+const myStr = "I am a \"double quoted\" string inside \"double quotes\".";
+```
+
+## Quoting Strings with Single Quotes
+
+String values in JavaScript may be written with single or double quotes, as long as you start and end with the same type of quote. The reason why you might want to use one type of quote over the other is if you want to use both in a string.
+
+```js
+let goodString = 'And so I said "What is up?".';
+let badString = "And so I said "What is up?".";
+let fixedString = "And so I said \"What is up?\".";
+```
+
+```js
+const myStr = '<a href="http://www.example.com" target="_blank">Link</a>';
+```
+
+## Escape Sequences in Strings
+
+Quotes are not the only characters that can be escaped inside a string. There are two reasons to use escaping characters:
+
+- To allow you to use characters you may not otherwise be able to type out, such as a carriage return.
+- To allow you to represent multiple quotes in a string without JavaScript misinterpreting what you mean.
+
+| Code | Output          |
+| ---- | --------------- |
+| `\'` | Single Quote    |
+| `\"` | Double Quote    |
+| `\\` | Backslash       |
+| `\n` | Newline         |
+| `\r` | Carriage Return |
+| `\t` | Tab             |
+| `\b` | Word Boundary   |
+| `\f` | Form Feed       |
+
+```js
+const myStr = "FirstLine\n\t\\SecondLine\nThirdLine";
+```
+
+## Concatenating Strings with Plus Operator
+
+```js
+const myStr = "This is the start." + " This is the end.";
+```
+
+## Concatenating Strings with the Plus Equals Operator
+
+We can also use the `+=` operator to concatenate a string onto the end of an existing string variable.
+
+```js
+let myStr = "This is the first sentence.";
+myStr += " This is the second sentence.";
+```
+
+## Constructing Strings with Variables
+
+```js
+const myName = "Aiden Waring";
+const myStr = "My name is " + myName + " and I am well!";
+```
+
+## Appending Variables to Strings
+
+We can also append variables to a string using the plus equals (`+=`) operator.
+
+```js
+const someAdjective = "spicy!";
+let myStr = "Learning to code is ";
+myStr += someAdjective;
+```
+
+## Find the Length of a String
+
+You can find the length of a `String` value by writing `.length` after the string variable or string literal.
+
+```js
+let lastNameLength = 0;
+const lastName = "Lovelace";
+lastNameLength = lastName.length;
+```
+
+## Use Bracket Notation to Find the First Character in a String
+
+Bracket notation is a way to get a character at a specific index within a string.
+
+```js
+let firstLetterOfLastName = "";
+const lastName = "Lovelace";
+firstLetterOfLastName = lastName[0];
+```
+
+## Understand String Immutability
+
+In JavaScript, `String values are immutable, which means that they cannot be altered once created.
+
+```js
+let myStr = "Bob";
+myStr[0] = "J";
+// Cannot change the value of myStr to "Job"
+// TypeError: Attempted to assign to readonly property.
+```
+
+```js
+let myStr = "Jello World";
+myStr = "Hello World";
+```
+
+## Use Bracket Notation to Find the Nth Character in a String
+
+```js
+const lastName = "Lovelace";
+const thirdLetterOfLastName = lastName[2];
+```
+
+## Use Bracket Notation to Find the Last Character in a String
+
+```js
+const lastName = "Lovelace";
+const lastLetterOfLastName = lastName[lastName.length - 1];
+```
+
