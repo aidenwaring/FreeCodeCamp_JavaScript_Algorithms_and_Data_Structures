@@ -404,3 +404,245 @@ const lastName = "Lovelace";
 const lastLetterOfLastName = lastName[lastName.length - 1];
 ```
 
+## Use Bracket Notation to Find the Nth-to-Last Character in a String
+
+```js
+const lastName = "Lovelace";
+const secondToLastLetterOfLastName = lastName[lastName.length - 2 ];
+```
+
+## Word Blanks
+
+```js
+const myNoun = "dog";
+const myAdjective = "big";
+const myVerb = "ran";
+const myAdverb = "quickly";
+
+const wordBlanks = "My " + myNoun + " is " + myAdjective + " and when I called him to come to me he" + myVerb + " very " + myAdverb;
+```
+
+## Store Multiple Values in one Variable using JavaScript Arrays
+
+With JavaScript `array` variables, we can store several pieces of data in one place.
+
+```js
+const myArray = ["Hello", 1];
+```
+
+## Nest one Array within Another Array
+
+A nested array is also called a multi-dimensional array.
+
+```js
+const myArray = [["Hello", "World"],[1, 2]];
+```
+
+## Access Array Data with Indexes
+
+We can access the data inside arrays using indexes.
+
+```js
+const myArray = [50, 60, 70];
+const myData = myArray[0];
+```
+
+## Modify Array Data With Indexes
+
+Unlike strings, the entries of arrays are mutable and can be changed freely, even if the array was declared with `const`.
+
+```js
+const myArray = [18, 64, 99];
+myArray[0] = 45;
+```
+
+## Access Multi-Dimensional Arrays With Indexes
+
+One way to think of a multi-dimensional array, is as an array of arrays. When you use brackets to access your array, the first set of brackets refers to the entries in the outer-most (the first level) array, and each additional pair of brackets refers to the next level of entries inside.
+
+```js
+const arr = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+  [[10, 11, 12], 13, 14]
+];
+
+arr[3];
+arr[3][0];
+arr[3][0][1];
+```
+
+- `arr[3]` is `[[10, 11, 12], 13, 14],` 
+
+- `arr[3][0]` is `[10, 11, 12]`
+
+- `arr[3][0][1]` is `11`.
+
+```js
+const myArray = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+  [[10, 11, 12], 13, 14],
+];
+
+const myData = myArray[2][1];
+```
+
+## Manipulate Arrays With push()
+
+An easy way to append data to the end of an array is via the `push()` function.
+
+`.push` takes one or parameters and "pushes" them to the end of the array.
+
+```js
+const myArray = [["John", 23], ["cat", 2]];
+
+myArray.push(["dog", 3]);
+```
+
+## Manipulate Arrays With pop()
+
+`.pop()` is used to pop a value off of the end of an array. We can store this popped off value by assigning it to a variable. 
+
+In other words, `.pop()` removes the last element from an array and returns that element.
+
+```js
+const myArray = [["John", 23], ["cat", 2]];
+
+const removedFromMyArray = myArray.pop();
+```
+
+## Manipulate Arrays With shift()
+
+`.shift()` is used to 'shift off' / remove the first element in the array.
+
+```js
+const myArray = [["John", 23], ["dog", 3]];
+
+const removedFromMyArray = myArray.shift();
+```
+
+## Manipulate Arrays With unshift()
+
+Not only can you `shift` elements off of the beginning of an array, you can also `unshift` elements to the beginning of an array i.e. add elements in front of the array.
+
+```js
+const myArray = [["John", 23], ["dog", 3]];
+myArray.shift();
+
+myArray.unshift(["Paul", 35]);
+```
+
+## Shopping List
+
+```js
+const myList = [
+  ["Chocolate", 15],
+  ["Banana", 1],
+  ["Bread", 5],
+  ["Apples", 2],
+  ["Mangoes", 3]
+];
+```
+
+## Write Reusable JavaScript with Functions
+
+```js
+function myFunction() {
+  console.log("Hi World");
+}
+
+myFunction()
+```
+
+## Passing Values to Functions with Arguments
+
+```js
+function testFun(param1, param2) {
+  console.log(param1, param2);
+}
+```
+
+```js
+function functionWithArgs(param1, param2) {
+  console.log(param1 + param2);
+}
+
+functionWithArgs(1, 2);
+```
+
+## Return a Value from a Function with Return
+
+```js
+function timesFive(param) {
+  return param * 5;
+}
+
+timesFive(20);
+```
+
+## Global Scope and Functions
+
+In JavaScript, scope refers to the visibility of variables.
+
+Variables which are defined outside of a function block have Global scope.
+
+Variables declared without either `let` or `const` have global scope.
+
+```js
+// Declare the myGlobal variable below this line
+const myGlobal = 10;
+
+function fun1() {
+  // Assign 5 to oopsGlobal Here
+  oopsGlobal = 5;
+}
+
+// Only change code above this line
+
+function fun2() {
+  var output = "";
+  if (typeof myGlobal != "undefined") {
+    output += "myGlobal: " + myGlobal;
+  }
+  if (typeof oopsGlobal != "undefined") {
+    output += " oopsGlobal: " + oopsGlobal;
+  }
+  console.log(output);
+}
+```
+
+## Local Scope and Functions
+
+Variables which are declared within a function, as well as the function parameters, have local scope.
+
+```js
+function myLocalScope() {
+  let myVar = 1;
+  console.log('inside myLocalScope', myVar);
+}
+myLocalScope();
+
+// myVar is not defined outside of myLocalScope
+console.log('outside myLocalScope', myVar);
+```
+
+## Global vs. Local Scope in Functions
+
+It is possible to have both local and global variables with the same name. When you do this, the local variable takes precedence over the global variable.
+
+- Local > Global
+
+```js
+const outerWear = "T-Shirt";
+
+function myOutfit() {
+  const outerWear = "sweater"
+  return outerWear;
+}
+
+myOutfit();
+// returns "sweater"
+```
