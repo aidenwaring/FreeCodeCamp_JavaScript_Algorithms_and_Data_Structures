@@ -690,3 +690,229 @@ console.log("Before: " + JSON.stringify(testArr));
 console.log(nextInLine(testArr, 6));
 console.log("After: " + JSON.stringify(testArr));
 ```
+
+## Understanding Boolean Values
+
+```js
+function welcomeToBooleans() {
+  return true;
+}
+```
+
+## Use Conditional Logic with If Statements
+
+```js
+function trueOrFalse(wasThatTrue) {
+  if (wasThatTrue) {
+    return "Yes, that was true"
+  }
+  return "No, that was false"
+}
+```
+
+## Comparison with the Equality (==) Operator
+
+```js
+function testEqualToTwelve(val) {
+  if (val == 12) {
+    return "Equal to twelve";
+  }
+  return "Not equal to twelve";
+}
+testEqualToTwelve(10);
+```
+
+## Comparison with the Strict Equality (===) Operator
+
+Strict equality `===` is the counterpart to the equality operator `==`. However, unlike the equality operator, which attempts to convert both values being compared to a common type, the strict equality operator does not perform a type conversion.
+
+```js
+3 ===  3
+3 === '3'
+```
+
+These conditions would return `true` and `false` respectively.
+
+## Understanding the typeof Operator
+
+In JavaScript, you can determine the type of a variable or a value with the `typeof` operator, as follows:
+
+```js
+typeof 3
+typeof '3'
+```
+
+`typeof 3` returns the string `number`, and `typeof '3'` returns the string `string`.
+
+## Comparison with the Inequality (!=) Operator
+
+```js
+// Setup
+function testNotEqualTo99(val) {
+  if (val != 99) { 
+    return "Not Equal to 99";
+  }
+  return "Equal to 99";
+}
+
+testNotEqualTo99(10);
+```
+
+## Comparison with the Strict Inequality Operator
+
+```js
+!===
+```
+
+## Comparison with the Greater Than Operator
+
+```js
+function testGreaterThan(val) {
+  if (val > 100) {  
+    return "Over 100";
+  }
+
+  if (val > 10) {  
+    return "Over 10";
+  }
+
+  return "10 or Under";
+}
+
+testGreaterThan(10);
+```
+
+## Comparison with the Greater Than Or Equal To Operator
+
+```js
+function testGreaterOrEqual(val) {
+  if (val >= 20) {  
+    return "20 or Over";
+  }
+
+  if (val >= 10) {  
+    return "10 or Over";
+  }
+
+  return "Less than 10";
+}
+
+testGreaterOrEqual(10);
+```
+
+## Comparison with the Less Than Operator
+
+```js
+function testLessThan(val) {
+  if (val < 25) {  
+    return "Under 25";
+  }
+
+  if (val < 55) {  
+    return "Under 55";
+  }
+
+  return "55 or Over";
+}
+
+testLessThan(10);
+```
+
+## Comparison with the Less Than Or Equal To Operator
+
+```js
+function testLessOrEqual(val) {
+  if (val <= 12) {  
+    return "Smaller Than or Equal to 12";
+  }
+
+  if (val <= 24) {  
+    return "Smaller Than or Equal to 24";
+  }
+
+  return "More Than 24";
+}
+
+testLessOrEqual(10);
+```
+
+## Comparisons with the Logical And Operator
+
+```js
+function testLogicalAnd(val) {
+  if (val <= 50 && val >= 25) {
+    return "Yes"
+  }
+  return "No";
+}
+
+testLogicalAnd(10);
+```
+
+## Comparisons with the Logical Or Operator
+
+```js
+function testLogicalOr(val) {
+
+  if (val < 10 || val > 20) {
+    return "Outside";
+  }
+
+  return "Inside";
+}
+
+testLogicalOr(15);
+```
+
+## Introducing Else Statements
+
+```js
+function testElse(val) {
+  let result = "";
+
+  if (val > 5) {
+    result = "Bigger than 5";
+  } else {
+    result = "5 or Smaller";
+  }
+
+  return result;
+}
+
+testElse(4);
+```
+
+## Introducing Else If Statements
+
+```js
+function testElseIf(val) {
+  if (val > 10) {
+    return "Greater than 10";
+  } else if (val < 5) {
+    return "Smaller than 5";
+  } else {
+  return "Between 5 and 10";
+
+  }
+}
+
+testElseIf(7);
+```
+
+## Logical Order in If Else Statements
+
+The function is executed from top to bottom so you will want to be careful of what statement comes first.
+
+```js
+function orderMyLogic(val) {
+  if (val < 5) {
+    return "Less than 5";
+  } else if (val < 10) {
+    return "Less than 10";
+  } else {
+    return "Greater than or equal to 10";
+  }
+}
+
+orderMyLogic(7);
+```
