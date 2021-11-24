@@ -241,7 +241,6 @@ c -= 1;
 
 ## Compound Assignment With Augmented Multiplication
 
-
 ```js
 myVar = myVar * 2;
 ```
@@ -411,7 +410,7 @@ const lastName = "Lovelace";
 const secondToLastLetterOfLastName = lastName[lastName.length - 2 ];
 ```
 
-## Word Blanks
+## Word Blanks (Code Challenge)
 
 ```js
 const myNoun = "dog";
@@ -535,7 +534,7 @@ myArray.shift();
 myArray.unshift(["Paul", 35]);
 ```
 
-## Shopping List
+## Shopping List (Code Challenge)
 
 ```js
 const myList = [
@@ -592,15 +591,11 @@ Variables which are defined outside of a function block have Global scope.
 Variables declared without either `let` or `const` have global scope.
 
 ```js
-// Declare the myGlobal variable below this line
 const myGlobal = 10;
 
 function fun1() {
-  // Assign 5 to oopsGlobal Here
   oopsGlobal = 5;
 }
-
-// Only change code above this line
 
 function fun2() {
   var output = "";
@@ -645,4 +640,53 @@ function myOutfit() {
 
 myOutfit();
 // returns "sweater"
+```
+
+## Understanding Undefined Value returned from a Function
+
+In the case that the function doesn't have a `return` statement, when you call it, the function processes the inner code but the returned value is `undefined`.
+
+```js
+let sum = 0;
+
+function addThree() {
+  sum = sum + 3;
+}
+
+function addFive() {
+  sum += 5;
+}
+
+addThree();
+addFive();
+```
+
+## Assignment with a Returned Value
+
+```js
+let processed = 0;
+
+function processArg(num) {
+  return (num + 3) / 5;
+}
+
+processed = processArg(7);
+```
+
+## Stand in Line (Code Challenge)
+
+In Computer Science a queue is an abstract Data Structure where items are kept in order. New items can be added at the back of the queue and old items are taken off from the front of the queue.
+
+```js
+function nextInLine(arr, item) {
+  arr.push(item);
+  item = arr.shift();
+  return item;
+}
+
+const testArr = [1, 2, 3, 4, 5];
+
+console.log("Before: " + JSON.stringify(testArr));
+console.log(nextInLine(testArr, 6));
+console.log("After: " + JSON.stringify(testArr));
 ```
