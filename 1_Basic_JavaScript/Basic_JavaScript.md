@@ -966,3 +966,134 @@ function caseInSwitch(val) {
 
 caseInSwitch(1);
 ```
+
+## Adding a Default Option in Switch Statements
+
+```js
+function switchOfStuff(val) {
+  let answer = "";
+
+  switch (val) {
+    case "a":
+      answer = "apple";
+      break;
+    case "b":
+      answer = "bird";
+      break;
+    case "c":
+      answer = "cat";
+      break;
+    default:
+      answer = "stuff"
+  }
+
+  return answer;
+}
+
+switchOfStuff(1);
+```
+
+## Multiple Identical Options in Switch Statements
+
+```js
+function sequentialSizes(val) {
+  let answer = "";
+
+  switch(val) {
+    case 1:
+    case 2:
+    case 3:
+      answer = "Low";
+      break;
+    case 4:
+    case 5:
+    case 6:
+      answer = "Mid";
+      break;
+    case 7:
+    case 8:
+    case 9:
+      answer = "High";
+      break;
+  }
+
+  return answer;
+}
+
+sequentialSizes(1);
+```
+
+## Replacing If Else Chains with Switch
+
+```js
+function chainToSwitch(val) {
+  let answer = "";
+
+  switch(val) {
+    case "bob":
+      answer = "Marley";
+      break;
+    case 42:
+      answer = "The Answer";
+      break;
+    case 1:
+      answer = "There is no #1";
+      break;
+    case 99:
+      answer = "Missed me by this much!";
+      break;
+    case 7:
+      answer = "Ate Nine";
+      break;
+  }
+
+  return answer;
+}
+
+chainToSwitch(7);
+```
+
+## Returning Boolean Values from Functions
+
+```js
+function isLess(a, b) {
+//   if (a < b) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
+
+  return a < b;
+}
+
+isLess(10, 15);
+```
+
+## Return Early Pattern for Functions
+
+When a `return` statement is reached, the execution of the current function stops and control returns to the calling location.
+
+
+```js
+function myFun() {
+  console.log("Hello");
+  return "World";
+  console.log("byebye")
+}
+myFun();
+// byebye is never shown in the console
+```
+
+```js
+// Setup
+function abTest(a, b) {
+  if (a < 0 || b < 0) {
+    return undefined;
+  }
+
+  return Math.round(Math.pow(Math.sqrt(a) + Math.sqrt(b), 2));
+}
+
+abTest(2,2);
+```
