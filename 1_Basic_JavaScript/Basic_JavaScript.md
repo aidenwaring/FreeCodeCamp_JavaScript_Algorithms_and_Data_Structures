@@ -916,3 +916,53 @@ function orderMyLogic(val) {
 
 orderMyLogic(7);
 ```
+
+## Chaining if else
+
+```js
+function testSize(num) {
+  if (num < 5) {
+    return "Tiny";
+  } else if (num < 10) {
+    return "Small";
+  } else if (num < 15) {
+    return "Medium";
+  } else if (num < 20) {
+    return "Large";
+  } else if (num >= 20) {
+    return "Huge";
+  }
+
+  return "Change Me";
+}
+
+testSize(7);
+```
+
+## Selecting from Many Options with Switch Statements
+
+`case` values are tested with strict equality (`===`). The `break` tells JavaScript to stop executing statements. If the `break` is omitted, the next statement will be executed.
+
+```js
+function caseInSwitch(val) {
+  let answer = "";
+  // Only change code below this line
+  switch(val) {
+    case 1:
+      answer = "alpha";
+      break;
+    case 2:
+      answer = "beta";
+      break;
+    case 3:
+      answer = "gamma";
+      break;
+    case 4:
+      answer = "delta";
+      break;
+  }
+  return answer;
+}
+
+caseInSwitch(1);
+```
