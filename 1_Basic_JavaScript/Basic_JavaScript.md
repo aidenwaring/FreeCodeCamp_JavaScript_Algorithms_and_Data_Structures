@@ -1097,3 +1097,330 @@ function abTest(a, b) {
 
 abTest(2,2);
 ```
+
+## Counting Cards (Code Challenge)
+
+```js
+let count = 0;
+
+function cc(card) {
+  switch(card) {
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+      count++;
+      break;
+    case 7:
+    case 8:
+    case 9:
+      break;
+    case 10:
+    case "J":
+    case "Q":
+    case "K":
+    case "A":
+      count--;
+      break;
+  }
+  if (count > 0) {
+    return count + " Bet";
+  } else if (count <= 0) {
+    return count + " Hold";
+  }
+}
+
+cc(2); cc(3); cc(7); cc('K'); cc('A');
+```
+
+## Build JavaScript Objects
+
+```js
+const cat = {
+  "name": "Whiskers",
+  "legs": 4,
+  "tails": 1,
+  "enemies": ["Water", "Dogs"]
+};
+```
+
+```js
+const myDog = {
+  "name": "Albie",
+  "legs": 4,
+  "tails": 1,
+  "friends": ["Aiden, Madeleine"]
+};
+```
+
+## Accessing Object Properties with Dot Notation
+
+There are two ways to access the properties of an object: dot notation (`.`) and bracket notation (`[]`), similar to an array.
+
+```js
+const myClothes = {
+  "hat": "ballcap",
+  "shirt": "jersey",
+  "shoes": "cleats"
+};
+
+const hatValue = myClothes.hat;
+const shirtValue = myClothes.shirt;
+```
+
+## Accessing Object Properties with Bracket Notation
+
+If the property of the object you are trying to access has a space in its name, you will need to use bracket notation.
+
+```js
+const testObj = {
+  "an entree": "hamburger",
+  "my side": "veggies",
+  "the drink": "water"
+};
+
+const entreeValue = testObj["an entree"];
+const drinkValue = testObj["the drink"];
+```
+
+## Accessing Object Properties with Variables
+
+Here is an example of using a variable to access a property:
+
+```js
+const dogs = {
+  Fido: "Mutt",
+  Hunter: "Doberman",
+  Snoopie: "Beagle"
+};
+
+const myDog = "Hunter";
+const myBreed = dogs[myDog];
+console.log(myBreed);
+// Doberman
+```
+
+```js
+const testObj = {
+  12: "Namath",
+  16: "Montana",
+  19: "Unitas"
+};
+
+const playerNumber = 16;
+const player = testObj[playerNumber];
+```
+
+## Updating Object Properties
+
+```js
+// Setup
+const myDog = {
+  "name": "Coder",
+  "legs": 4,
+  "tails": 1,
+  "friends": ["freeCodeCamp Campers"]
+};
+
+myDog.name = "Happy Coder";
+```
+
+## Add New Properties to a JavaScript Object
+
+```js
+const myDog = {
+  "name": "Happy Coder",
+  "legs": 4,
+  "tails": 1,
+  "friends": ["freeCodeCamp Campers"]
+};
+
+myDog.bark = "woof";
+// myDog[bark] = "woof"
+
+console.log(myDog.bark);
+// woof
+```
+
+## Delete Properties from a JavaScript Object
+
+```js
+const myDog = {
+  "name": "Happy Coder",
+  "legs": 4,
+  "tails": 1,
+  "friends": ["freeCodeCamp Campers"],
+  "bark": "woof"
+};
+
+delete myDog.tails;
+```
+
+## Using Objects for Lookups
+
+Objects can be thought of as a key/value storage, like a dictionary. If you have tabular data, you can use an object to lookup values rather than a `switch` statement or an `if/else` chain. This is most useful when you know that your input data is limited to a certain range.
+
+```js
+function phoneticLookup(val) {
+  let result = "";
+
+  // switch(val) {
+  //   case "alpha":
+  //     result = "Adams";
+  //     break;
+  //   case "bravo":
+  //     result = "Boston";
+  //     break;
+  //   case "charlie":
+  //     result = "Chicago";
+  //     break;
+  //   case "delta":
+  //     result = "Denver";
+  //     break;
+  //   case "echo":
+  //     result = "Easy";
+  //     break;
+  //   case "foxtrot":
+  //     result = "Frank";
+  // }
+
+  const lookup = {
+    "alpha": "Adams",
+    "bravo": "Boston",
+    "charlie": "Chicago",
+    "delta": "Denver",
+    "echo": "Easy",
+    "foxtrot": "Frank"
+  }
+  result = lookup[val];
+
+  return result;
+}
+
+phoneticLookup("charlie");
+```
+
+## Testing Objects for Properties
+
+Sometimes it is useful to check if the property of a given object exists or not. We can use the `.hasOwnProperty(prop)` method of objects to determine if that object has the given property name. `.hasOwnProperty()` returns `true` or `false` if the property is found or not.
+
+```js
+function checkObj(obj, checkProp) {
+  if (obj.hasOwnProperty(checkProp)) {
+    return obj[checkProp];
+  } else {
+    return "Not Found"
+  }
+}
+```
+
+## Object Dot Notation vs. Bracket Notation
+
+Dot notation looks for a specific property name whereas bracket notation looks for the value of the property name.
+
+## Manipulating Complex Objects
+
+Sometimes you may want to store data in a flexible Data Structure. 
+
+A JavaScript object is one way to handle flexible data. They allow for arbitrary combinations of strings, numbers, booleans, arrays, functions, and objects.
+
+Example:
+
+```js
+const ourMusic = [
+  {
+    "artist": "Daft Punk",
+    "title": "Homework",
+    "release_year": 1997,
+    "formats": [ 
+      "CD", 
+      "Cassette", 
+      "LP"
+    ],
+    "gold": true
+  }
+];
+```
+
+This is an array which contains one object inside. It also has a nested array. If you want to add more album records, you can do this by adding records to the top level array.
+
+JavaScript Object Notation or JSON is a related data interchange format used to store data.
+
+```js
+const myMusic = [
+  {
+    "artist": "Billy Joel",
+    "title": "Piano Man",
+    "release_year": 1973,
+    "formats": [
+      "CD",
+      "8T",
+      "LP"
+    ],
+    "gold": true
+  },
+  {
+    "artist": "Tycho",
+    "title": "Dive",
+    "release_year": 2011,
+    "formats": [
+      "CD",
+      "LP"
+    ],
+    "great_album": true
+  }
+];
+
+```
+
+## Accessing Nested Objects
+
+The sub-properties of objects can be accessed by chaining together the dot or bracket notation.
+
+```js
+const myStorage = {
+  "car": {
+    "inside": {
+      "glove box": "maps",
+      "passenger seat": "crumbs",
+      "drink_tray": "coffee"
+     },
+    "outside": {
+      "trunk": "jack"
+    }
+  }
+};
+
+const gloveBoxContents = myStorage.car.inside["glove box"];
+myStorage.car.outside.trunk;
+```
+
+## Accessing Nested Arrays
+
+Similar to accessing nested objects, array bracket notation can be chained to access nested arrays.
+
+```js
+const myPlants = [
+  {
+    type: "flowers",
+    list: [
+      "rose",
+      "tulip",
+      "dandelion"
+    ]
+  },
+  {
+    type: "trees",
+    list: [
+      "fir",
+      "pine",
+      "birch"
+    ]
+  }
+];
+
+const secondTree = myPlants[1].list[1];
+// Selects "pine"
+```
+
