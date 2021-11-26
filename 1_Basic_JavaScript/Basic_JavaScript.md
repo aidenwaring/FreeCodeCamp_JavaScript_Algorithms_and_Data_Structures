@@ -1424,3 +1424,429 @@ const secondTree = myPlants[1].list[1];
 // Selects "pine"
 ```
 
+## Record Collection (Code Challenge)
+
+```js
+const recordCollection = {
+  2548: {
+    albumTitle: 'Slippery When Wet',
+    artist: 'Bon Jovi',
+    tracks: ['Let It Rock', 'You Give Love a Bad Name']
+  },
+  2468: {
+    albumTitle: '1999',
+    artist: 'Prince',
+    tracks: ['1999', 'Little Red Corvette']
+  },
+  1245: {
+    artist: 'Robert Palmer',
+    tracks: []
+  },
+  5439: {
+    albumTitle: 'ABBA Gold'
+  }
+};
+
+function updateRecords(records, id, prop, value) {
+  if (prop !== 'tracks' && value !== "") {
+    records[id][prop] = value;
+  } else if (prop === 'tracks' && records[id].hasOwnProperty(prop) === false) {
+    records[id][prop] = [value]; 
+  } else if (prop === 'tracks' && value !== "" && records[id].hasOwnProperty(prop)) {
+    records[id][prop].push(value);
+  } else if (value === "") {
+    delete records[id][prop];
+  }
+  return records;
+}
+
+updateRecords(recordCollection, 5439, 'artist', 'ABBA');
+updateRecords(recordCollection, 5439, 'artist', 'ABBA');
+updateRecords(recordCollection, 5439, "tracks", "Take a Chance on Me");
+updateRecords(recordCollection, 2548, "artist", "");
+updateRecords(recordCollection, 1245, "tracks", "Addicted to Love");
+updateRecords(recordCollection, 2468, "tracks", "Free");
+updateRecords(recordCollection, 2548, "tracks", "");
+updateRecords(recordCollection, 1245, "albumTitle", "Riptide");
+```
+
+## Iterate with JavaScript While Loops
+
+A `while` loop runs while a specified condition is true and stops once that condition is no longer true.
+
+```js
+const myArray = [];
+let i = 5;
+
+while (i >= 0) {
+  myArray.push(i);
+  i--;
+}
+// [5, 4, 3, 2, 1, 0]
+```
+
+## Iterate with JavaScript For Loops
+
+The most common type of JavaScript loop is called a `for` loop because it runs for a specific number of times.
+
+`for (a; b; c)`, where `a` is the initialization statement, `b` is the condition statement, and `c` is the final expression.
+
+The condition statement is evaluated at the beginning of every loop iteration and will continue as long as it evaluates to `true`. When the condition is `false` at the start of the iteration, the loop will stop executing.
+
+The final expression is executed at the end of each loop iteration, prior to the next condition check and is usually used to increment or decrement your loop counter.
+
+```js
+const myArray = [];
+
+for (let i = 1; i <= 5; i++) {
+  myArray.push(i);
+}
+// [1, 2, 3, 4, 5]
+```
+
+## Iterate Odd Numbers With a For Loop
+
+For loops don't have to iterate one at a time. By changing our `final-expression`, we can count by even numbers.
+
+We'll start at `i = 0` and loop while `i < 10`. We'll increment `i` by 2 each loop with `i += 2`.
+
+```js
+const ourArray = [];
+
+for (let i = 0; i < 10; i += 2) {
+  ourArray.push(i);
+}
+// [0, 2, 4, 6, 8]
+```
+
+```js
+// Setup
+const myArray = [];
+
+// Only change code below this line
+for (let i = 1; i <= 9; i += 2) {
+  myArray.push(i);
+}
+// [1, 3, 5, 7, 9]
+```
+
+## Count Backwards With a For Loop
+
+```js
+const ourArray = [];
+
+for (let i = 10; i > 0; i -= 2) {
+  ourArray.push(i);
+}
+// [10, 8, 6, 4, 2]
+```
+
+```js
+const myArray = [];
+
+for (let i = 9; i >= 1; i -= 2) {
+  myArray.push(i);
+}
+// [9, 7, 5, 3, 1]
+```
+
+## Iterate Through an Array with a For Loop
+
+```js
+const myArr = [2, 3, 4, 5, 6];
+
+let total = 0;
+
+for (let i = 0; i < myArr.length; i++) {
+  total += myArr[i];
+}
+// 20;
+```
+
+## Nesting For Loops
+
+If you have a multi-dimensional array, you can use the same logic as the prior waypoint to loop through both the array and any sub-arrays. Here is an example:
+
+```js
+const arr = [
+  [1, 2], [3, 4], [5, 6]
+];
+
+for (let i = 0; i < arr.length; i++) {
+  for (let j = 0; j < arr[i].length; j++) {
+    console.log(arr[i][j]);
+  }
+}
+```
+
+This outputs each sub-element in `arr` one at a time. Note that for the inner loop, we are checking the `.length` of `arr[i]`, since `arr[i]` is itself an array.
+
+```js
+function multiplyAll(arr) {
+  let product = 1;
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr[i].length; j++) {
+      product *= arr[i][j];
+    }
+  }
+  return product;
+}
+
+multiplyAll([[1, 2], [3, 4], [5, 6, 7]]);
+```
+
+## Iterate with JavaScript Do...While Loops
+
+The next type of loop you will learn is called a `do...while` loop. It is called a `do...while` loop because it will first `do` one pass of the code inside the loop no matter what, and then continue to run the loop while the specified condition evaluates to true.
+
+```js
+const ourArray = [];
+let i = 0;
+
+do {
+  ourArray.push(i);
+  i++;
+} while (i < 5);
+// [0, 1, 2, 3, 4]
+```
+
+The example above behaves similar to other types of loops, and the resulting array will look like `[0, 1, 2, 3, 4]`. However, what makes the `do...while` different from other loops is how it behaves when the condition fails on the first check. Let's see this in action: Here is a regular `while` loop that will run the code in the loop as long as `i < 5`:
+
+```js
+const ourArray = []; 
+let i = 5;
+
+while (i < 5) {
+  ourArray.push(i);
+  i++;
+}
+
+// []
+```
+
+In this example, we initialize the value of `ourArray` to an empty array and the value of `i` to 5. When we execute the `while` loop, the condition evaluates to `false` because `i` is not less than 5, so we do not execute the code inside the loop. The result is that `ourArray` will end up with no values added to it, and it will still look like `[]` when all of the code in the example above has completed running.
+
+Now, take a look at a `do...while` loop:
+
+```js
+const ourArray = []; 
+let i = 5;
+
+do {
+  ourArray.push(i);
+  i++;
+} while (i < 5);
+
+// [5]
+```
+
+Essentially, a `do...while` loop ensures that the code inside the loop will run at least once.
+
+```js
+// Setup
+const myArray = [];
+let i = 10;
+
+// Only change code below this line
+do {
+  myArray.push(i);
+  i++;
+} while (i < 10);
+```
+
+## Replace Loops using Recursion
+
+```js
+function sum(arr, n) {
+  if (n <= 0) {
+    return 0;
+  } else {
+    return sum(arr, n - 1) + arr[n - 1];
+  }
+}
+```
+
+## Profile Lookup (Code Challenge)
+
+```js
+// Setup
+const contacts = [
+  {
+    firstName: "Akira",
+    lastName: "Laine",
+    number: "0543236543",
+    likes: ["Pizza", "Coding", "Brownie Points"],
+  },
+  {
+    firstName: "Harry",
+    lastName: "Potter",
+    number: "0994372684",
+    likes: ["Hogwarts", "Magic", "Hagrid"],
+  },
+  {
+    firstName: "Sherlock",
+    lastName: "Holmes",
+    number: "0487345643",
+    likes: ["Intriguing Cases", "Violin"],
+  },
+  {
+    firstName: "Kristian",
+    lastName: "Vos",
+    number: "unknown",
+    likes: ["JavaScript", "Gaming", "Foxes"],
+  },
+];
+
+function lookUpProfile(name, prop) {
+  for (let x = 0; x < contacts.length; x++) {
+    if (contacts[x].firstName === name) {
+      if (contacts[x].hasOwnProperty(prop)) {
+        return contacts[x][prop];
+      } else {
+        return "No such property";
+      }
+    }
+  }
+  return "No such contact";
+}
+
+lookUpProfile("Akira", "likes");
+```
+
+## Generate Random Fractions with JavaScript
+
+JavaScript has a `Math.random()` function that generates a random decimal number between `0` (inclusive) and `1` (exclusive). Thus `Math.random()` can return a `0` but never return a `1`.
+
+```js
+function randomFraction() {
+  return Math.random();
+}
+```
+
+## Generate Random Whole Numbers with JavaScript
+
+It's great that we can generate random decimal numbers, but it's even more useful if we use it to generate random whole numbers.
+
+- Use `Math.random()` to generate a random decimal.
+- Multiply that random decimal by `20`.
+- Use another function, `Math.floor()` to round the number down to its nearest whole number.
+
+Remember that `Math.random()` can never quite return a `1` and, because we're rounding down, it's impossible to actually get `20`. This technique will give us a whole number between `0` and `19`.
+
+```js
+Math.floor(Math.random() * 20);
+// Returns a random whole number between 0 and 19
+```
+
+```js
+function randomWholeNum() {
+  return Math.floor(Math.random() * 10);
+}
+// Returns a random whole number between 0 and 9
+```
+
+## Generate Random Whole Numbers within a Range
+
+Instead of generating a random whole number between zero and a given number like we did before, we can generate a random whole number that falls within a range of two specific numbers.
+
+To do this, we'll define a minimum number `min` and a maximum number `max`.
+
+```js
+Math.floor(Math.random() * (max - min + 1)) + min
+```
+
+```js
+function randomRange(myMin, myMax) {
+  return Math.floor(Math.random() * (myMax - myMin + 1)) + myMin;
+}
+```
+
+## Use the parseInt Function
+
+```js
+const a = parseInt("007");
+// 7
+```
+
+The above function converts the string `007` to the integer `7`. If the first character in the string can't be converted into a number, then it returns `NaN`.
+
+```js
+function convertToInteger(str) {
+  return parseInt(str);
+}
+
+convertToInteger("56");
+// 56
+```
+
+## Use the parseInt Function with a Radix
+
+The `parseInt()` function parses a string and returns an integer. It takes a second argument for the radix, which specifies the base of the number in the string. The radix can be an integer between 2 and 36.
+
+```js
+parseInt(string, radix);
+```
+
+```js
+const a = parseInt("11", 2);
+```
+
+The radix variable says that `11` is in the binary system, or base 2. This example converts the string `11` to an integer `3`.
+
+```js
+function convertToInteger(str) {
+  return parseInt(str, 2);
+}
+
+convertToInteger("10011");
+```
+
+## Use the Conditional (Ternary) Operator
+
+```js
+function checkEqual(a, b) {
+  return a == b ? "Equal" : "Not Equal";
+}
+
+checkEqual(1, 2);
+```
+
+## Use Multiple Conditional (Ternary) Operators
+
+```js
+function checkSign(num) {
+  return num == 0 ? "zero"
+   : num > 0 ? "positive"
+   : "negative"; 
+}
+
+checkSign(10);
+```
+
+## Use Recursion to Create a Countdown
+
+```js
+function countdown(n) {
+  if (n < 1) {
+    return [];
+  } else {
+    const arr = countdown(n - 1);
+    arr.unshift(n);
+    return arr;
+  }
+}
+```
+
+## Use Recursion to Create a Range of Numbers
+
+```js
+function rangeOfNumbers(startNum, endNum) {
+  if (endNum - startNum === 0) {
+    return [startNum];
+  } else {
+    var numbers = rangeOfNumbers(startNum, endNum - 1);
+    numbers.push(endNum);
+    return numbers;
+  }
+}
+```
