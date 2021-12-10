@@ -220,3 +220,78 @@ const sum = (...args) => args.reduce(
 console.log(sum(1, 2, 3));
 // 6
 ```
+
+## Use the Spread Operator to Evaluate Arrays In-Place
+
+ES6 introduces the *spread operator*, which allows us to expand arrays and other expressions in places where multiple parameters or elements are expected.
+
+```js
+const arr = [6, 89, 3, 45];
+const maximus = Math.max(...arr);
+// 89
+```
+
+`...arr` returns an unpacked array. In other words, it *spreads* the array. 
+
+**Copying an array**
+
+```js
+const arr1 = ['JAN', 'FEB', 'MAR', 'APR', 'MAY'];
+let arr2;
+
+arr2 = [...arr1];
+
+console.log(arr2);
+```
+
+**Spread in array literals**
+
+```js
+let parts = ['shoulders', 'knees'];
+let lyrics = ['head', ...parts, 'and', 'toes'];
+//  ["head", "shoulders", "knees", "and", "toes"]
+```
+
+## Use Destructuring Assignment to Extract Values from Objects
+
+*Destructuring assignment* is special syntax introduced in ES6, for neatly assigning values taken directly from an `object`.
+
+```js
+// ES5
+const user = { name: 'John Doe', age: 34 };
+
+const name = user.name;
+const age = user.age;
+
+console.log(name);
+console.log(age);
+// John Doe
+// 34
+```
+
+```js
+// ES6
+const user = { name: 'John Doe', age: 34 };
+
+const { name, age } = user;
+
+console.log(name);
+console.log(age);
+```
+
+Here, the `name` and `age` variables will be created and assigned the values of their respective values from the `user` object. This is much cleaner.
+
+```js
+const HIGH_TEMPERATURES = {
+  today: 77,
+  tomorrow: 80
+};
+
+// ES5
+// const today = HIGH_TEMPERATURES.today;
+// const tomorrow = HIGH_TEMPERATURES.tomorrow;
+
+// ES6
+const { today, tomorrow } = HIGH_TEMPERATURES;
+```
+
