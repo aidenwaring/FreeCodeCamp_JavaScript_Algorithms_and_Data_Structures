@@ -393,3 +393,241 @@ console.log(a, b);
 ```
 
 The variable `a` is assigned the first value of the array, and `b` is assigned the second value of the array.
+
+## Use Destructuring Assignment with the Rest Parameter to Reassign Array Elements
+
+In some situations involving array destructuring, we might want to collect the rest of the elements into a separate array.
+
+```js
+const [a, b, ...arr] = [1, 2, 3, 4, 5, 7];
+console.log(a, b);
+console.log(arr);
+
+// 1 2
+// 3 4 5 6 7
+```
+
+Variables `a` and `b` take the first and second values from the array. After that, because of the rest parameter's presence, `arr` gets the rest of the values in the form of an array. 
+
+The rest element only works correctly as the last variable in the list.
+
+```js
+const source = [1,2,3,4,5,6,7,8,9,10];
+function removeFirstTwo(list) {
+  const [a, b, ...arr] = list
+  return arr;
+}
+const arr = removeFirstTwo(source);
+```
+
+## Use Destructuring Assignment to Pass an Object as a Function's Parameters
+
+In some cases, you can destructure the object in a function argument itself.
+
+```js
+// ES5
+const profileUpdate = (profileData) => {
+  const { name, age, nationality, location } = profileData;
+
+}
+
+// ES6
+const profileUpdate = ({ name, age, nationality, location }) => {
+
+}
+```
+
+Where is `profileData` in the ES6 example? When `profileData` is passed to the above ES6 function, the values are destructured from the function parameter for use within the function.
+
+```js
+const stats = {
+  max: 56.78,
+  standard_deviation: 4.34,
+  median: 34.54,
+  mode: 23.87,
+  min: -0.75,
+  average: 35.85
+};
+
+// ES5
+const half = (stats) => (stats.max + stats.min) / 2.0; 
+// ES6
+const half = ({ max, min }) => (max + min) / 2.0;
+```
+
+## Create Strings using Template Literals
+
+Template literals allow you to create multi-line strings and to use string interpolation features to create strings.
+
+```js
+const person = {
+  name: "Zodiac Hasbro",
+  age: 56
+};
+
+const greeting = `Hello, my name is ${person.name}!
+I am ${person.age} years old.`;
+
+console.log(greeting);
+```
+
+Firstly, the example uses backticks ``(`),`` not quotes (`'` or `"`), to wrap the string. 
+
+Secondly, notice that the string is multi-line, both in the code and the output. This saves inserting `\n` within strings. 
+
+The `${variable}` syntax used above is a placeholder. Basically, you won't have to use concatenation with the `+` operator anymore. To add variables to strings, you just drop the variable in a template string and wrap it with `${` and `}`. Similarly, you can include other expressions in your string literal, for example `${a + b}`.
+
+## Write Concise Object Literal Declarations Using Object Property Shorthand
+
+```js
+// ES5
+const getMousePosition = (x, y) => ({
+  x: x,
+  y: y
+});
+
+// ES6
+const getMousePosition = (x, y) => ({ x, y });
+```
+
+`getMousePosition` is a simple function that returns an object containing two properties. ES6 provides the syntactic sugar to eliminate the redundancy of having to write `x: x`. You can simply write `x` once, and it will be converted to `x: x`.
+
+```js
+const createPerson = (name, age, gender) => {
+  return {
+    name,
+    age,
+    gender
+  };
+};
+```
+
+## Write Concise Declarative Functions with ES6
+
+When defining functions within objects in ES5, we have to use the keyword `function` as follows:
+
+```js
+const person = {
+  name: "Taylor",
+  sayHello: function() {
+    return `Hello! My name is ${this.name}.`;
+  }
+};
+```
+
+With ES6, you can remove the `function` keyword and colon altogether when defining functions in objects. Here's an example of this syntax:
+
+```js
+const person = {
+  name: "Taylor",
+  sayHello() {
+    return `Hello! My name is ${this.name}.`;
+  }
+};
+```
+
+```js
+const bicycle = {
+  gear: 2,
+  setGear(newGear) {
+    this.gear = newGear;
+  }
+};
+bicycle.setGear(3);
+console.log(bicycle.gear);
+// 3
+```
+
+## Use class Syntax to Define a Constructor Function
+
+ES6 provides a new syntax to create objects, using the `class` keyword.
+
+It should be noted that the `class` syntax is just syntax, and not a full-fledged class-based implementation of an object-oriented paradigm, unlike in languages such as Java, Python, Ruby, etc.
+
+In ES5, we usually define a `constructor` function and use the `new` keyword to instantiate an object.
+
+```js
+var SpaceShuttle = function(targetPlanet){
+  this.targetPlanet = targetPlanet;
+}
+var zeus = new SpaceShuttle('Jupiter');
+```
+
+The `class` syntax simply replaces the `constructor` function creation:
+
+```js
+class SpaceShuttle {
+  constructor(targetPlanet) {
+    this.targetPlanet = targetPlanet;
+  }
+}
+const zeus = new SpaceShuttle('Jupiter');
+```
+
+This `constructor` is invoked when `new` is called to create a new object.
+
+```js
+class Vegetable {
+  constructor(name) {
+    this.name = name
+  }
+}
+
+const carrot = new Vegetable('carrot');
+console.log(carrot.name);
+// carrot
+```
+
+## Use getters and setters to Control Access to an Object
+
+You can obtain values from an object and set the value of a property within an object.
+
+Getter functions are meant to simply return (get) the value of an object's private variable to the user without the user directly accessing the private variable.
+
+Setter functions are meant to modify (set) the value of an object's private variable based on the value passed into the setter function.
+
+```js
+class Book {
+  constructor(author) {
+    this._author = author;
+  }
+  // getter
+  get writer() {
+    return this._author;
+  }
+  // setter
+  set writer(updatedAuthor) {
+    this._author = updatedAuthor;
+  }
+}
+const novel = new Book('anonymous');
+console.log(novel.writer);
+novel.writer = 'newAuthor';
+console.log(novel.writer);
+// anonymous
+// newAuthor
+```
+
+Notice the syntax used to invoke the getter and setter. They do not even look like functions. Getters and setters within classes are important because they hide internal implementation details.
+
+```js
+// Only change code below this line
+class Thermostat {
+  constructor(fahrenheit) {
+    this.fahrenheit = fahrenheit
+  }
+  get temperature() {
+    return (5 / 9) * (this.fahrenheit - 32);
+  }
+  set temperature(celsius) {
+    this.fahrenheit = (celsius * 9.0) / 5 + 32;
+  }
+}
+const myTemp = new Thermostat(76);
+myTemp.temperature();
+myTemp.temperature = 30;
+/*
+  Setters obfuscate the fact that they're functions to callers. 
+  When you have an object with a setter, to invoke the setter, assign to the property:
+*/
+```
