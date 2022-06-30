@@ -293,5 +293,103 @@ const HIGH_TEMPERATURES = {
 
 // ES6
 const { today, tomorrow } = HIGH_TEMPERATURES;
+
+console.log(today, tomorrow)
+// 77 80
 ```
 
+## Use Destructuring Assignment to Assign Variables from Objects
+
+Destructuring allows you to assign a new variable name when extracting values. You can do this by putting the new name after a colon when assigning the value.
+
+Using the same object from the last example:
+
+```js
+const user = { name: 'John Doe', age: 34 };
+```
+
+Here's how you can give new variable names in the assignment:
+
+```js
+const user = { name: 'John Doe', age: 34 };
+
+const { name: userName, age: userAge } = user;
+
+console.log(userName, userAge);
+// John Doe 34
+```
+
+You may read it as "get the value of `user.name` and assign it to a new variable named `userName`" and so on.
+
+```js
+const HIGH_TEMPERATURES = {
+  yesterday: 75,
+  today: 77,
+  tomorrow: 80
+};
+
+// ES5  
+// const highToday = HIGH_TEMPERATURES.today;
+// const highTomorrow = HIGH_TEMPERATURES.tomorrow; 
+
+//ES6
+const { today: highToday, tomorrow: highTomorrow } = HIGH_TEMPERATURES;
+```
+
+## Use Destructuring Assignment to Assign Variables from Nested Objects
+
+You can use the same principles from the previous two lessons to destructure values from nested objects.
+
+```js
+const user = {
+  johnDoe: { 
+    age: 34,
+    email: 'johnDoe@freeCodeCamp.com'
+  }
+};
+```
+
+Here's how to extract the values of object properties and assign them to variables with the same name:
+
+```js
+const user = {
+  johnDoe: { 
+    age: 34,
+    email: 'johnDoe@freeCodeCamp.com'
+  }
+};
+
+const { johnDoe: { age, email }} = user;
+```
+
+And here's how you can assign an object properties' values to variables with different names:
+
+```js
+const { johnDoe: { age: userAge, email: userEmail }} = user;
+```
+
+```js
+const LOCAL_FORECAST = {
+  yesterday: { low: 61, high: 75 },
+  today: { low: 64, high: 77 },
+  tomorrow: { low: 68, high: 80 }
+};
+
+const { today: { low: lowToday, high: highToday } } = LOCAL_FORECAST;
+```
+
+## Use Destructuring Assignment to Assign Variables from Arrays
+
+ES6 makes destructuring arrays as easy as destructuring objects.
+
+One key difference between the spread operator and array destructuring is that the spread operator unpacks all contents of an array into a comma-separated list. Consequently, you cannot pick or choose which elements you want to assign to variables.
+
+Destructuring an array lets us do exactly that:
+
+```js
+const [a, b] = [1, 2, 3, 4, 5, 6];
+console.log(a, b);
+// 1 2
+```
+
+The variable `a` is assigned the first value of the array, and `b` is assigned the second value of the array.
