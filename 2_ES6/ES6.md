@@ -611,7 +611,6 @@ console.log(novel.writer);
 Notice the syntax used to invoke the getter and setter. They do not even look like functions. Getters and setters within classes are important because they hide internal implementation details.
 
 ```js
-// Only change code below this line
 class Thermostat {
   constructor(fahrenheit) {
     this.fahrenheit = fahrenheit
