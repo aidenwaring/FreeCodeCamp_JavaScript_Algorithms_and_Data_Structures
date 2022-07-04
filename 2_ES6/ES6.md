@@ -631,3 +631,109 @@ myTemp.temperature = 30;
   When you have an object with a setter, to invoke the setter, assign to the property:
 */
 ```
+
+## Create a Module Script
+
+ES6 introduced a way to easily share code among JavaScript files.
+
+This involves exporting parts of a file for use in one or more other files, and importing the parts you need, where you need them.
+
+In order to take advantage of this functionality, you need to create a script in your HTML document with a `type` of `module`. Here’s an example:
+
+```html
+<script type="module" src="filename.js"></script>
+```
+
+A script that uses this `module` type can now use the `import` and `export` features you will learn about in the upcoming challenges.
+
+```html
+<html>
+  <body>
+    <script type="module" src="index.js"></script>
+  </body>
+</html>
+```
+
+## Use export to Share a Code Block
+
+In order to share a function or core block with other files, you first need to `export` it.
+
+```js
+export const add = (x, y) => {
+  return x + y;
+}
+```
+
+The above is a common way to export a single function, but you can achieve the same thing like this:
+
+```js
+const add = (x, y) => {
+  return x + y;
+}
+
+export { add };
+```
+
+When you export a variable or function, you can import it in another file and use it without having to rewrite the code. 
+
+```js
+export { add, subtract };
+// Multiple exports
+```
+
+```js
+const uppercaseString = (string) => {
+  return string.toUpperCase();
+}
+
+const lowercaseString = (string) => {
+  return string.toLowerCase()
+}
+
+export { uppercaseString, lowercaseString }
+```
+
+## Reuse JavaScript Code Using import
+
+`import` allows you to choose which parts of a file or module to load that have been exported from other files.
+
+```js
+import { add } from './math_functions.js';
+```
+
+Here, import will find add in math_functions.js, import just that function for you to use, and ignore the rest.
+
+You can also import multiple modules like so:
+
+```js
+import { add, subtract } from './math_functions.js';
+```
+
+```js
+import { uppercaseString, lowercaseString } from './string_functions.js'
+
+uppercaseString("hello");
+lowercaseString("WORLD!");
+```
+
+## Use * to Import Everything from a File
+
+```js
+import * as myMathModule from "./math_functions.js";
+```
+
+The above `import` statement will create an object with the variable name `myMathModule`. The object will contain all of the exports from `math_functions.js` in it, so you can access the functions like you would any other object property.
+
+```js
+import * as myMathModule from "./math_functions.js";
+
+myMathModule.add(2,3);
+myMathModule.subtract(5,3);
+```
+
+```js
+import * as stringFunctions from './string_functions.js'
+
+stringFunctions.uppercaseString("hello");
+stringFunctions.lowercaseString("WORLD!");
+```
